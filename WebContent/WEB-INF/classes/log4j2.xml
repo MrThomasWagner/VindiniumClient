@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+  
+	  <RollingFile 
+	  name="rollingFile" 
+	  fileName="${sys:catalina.home}/logs/app.log" 
+	  filePattern="${log-path}/myexample-%d{yyyy-MM-dd}-%i.log"
+	  >
+			<PatternLayout>
+				<pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+			</PatternLayout>
+			
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1000 KB" />
+			</Policies>
+			
+			<DefaultRolloverStrategy max="4"/>
+		</RollingFile>
+	    
+	    <Console name="STDOUT" target="SYSTEM_OUT">
+	      <PatternLayout pattern="%m%n"/>
+	    </Console>
+	    
+  </Appenders>
+  <Loggers>
+    <Root level="trace">
+      <AppenderRef ref="rollingFile" level="INFO"/>
+      <AppenderRef ref="STDOUT" level="ERROR"/>
+    </Root>
+  </Loggers>
+</Configuration>
