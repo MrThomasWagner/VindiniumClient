@@ -1,8 +1,7 @@
-package com.mrthomaswagner.vindiniumclient.game.naivebot;
+package com.mrthomaswagner.vindiniumclient.bot;
 
-import com.mrthomaswagner.vindiniumclient.dto.BotMove;
+import com.mrthomaswagner.vindiniumclient.BotMove;
 import com.mrthomaswagner.vindiniumclient.dto.GameState;
-import com.mrthomaswagner.vindiniumclient.game.Bot;
 
 public class NaiveBot implements Bot{
 

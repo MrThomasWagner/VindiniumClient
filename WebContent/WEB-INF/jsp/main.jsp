@@ -4,6 +4,7 @@
 <title>Vindinium</title>
 <style type="text/css">
 </style>
-ViewUrl: ${viewUrl}
+<body>
+<p>ViewUrl: ${viewUrl}</p>
 </body>
 </html>

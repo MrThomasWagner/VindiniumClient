@@ -1,4 +1,4 @@
-package com.mrthomaswagner.vindiniumclient.dto;
+package com.mrthomaswagner.vindiniumclient;
 
 /**
  * This is the output of a SimpleBot.

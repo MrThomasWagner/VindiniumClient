@@ -1,4 +1,4 @@
-package com.mrthomaswagner.vindiniumclient.game;
+package com.mrthomaswagner.vindiniumclient;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,9 +15,8 @@ import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.gson.GsonFactory;
-import com.mrthomaswagner.vindiniumclient.VindiniumClientController;
+import com.mrthomaswagner.vindiniumclient.bot.Bot;
 import com.mrthomaswagner.vindiniumclient.dto.ApiKey;
-import com.mrthomaswagner.vindiniumclient.dto.BotMove;
 import com.mrthomaswagner.vindiniumclient.dto.GameState;
 import com.mrthomaswagner.vindiniumclient.dto.Move;
 

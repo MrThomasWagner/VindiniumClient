@@ -1,6 +1,6 @@
-package com.mrthomaswagner.vindiniumclient.game;
+package com.mrthomaswagner.vindiniumclient.bot;
 
-import com.mrthomaswagner.vindiniumclient.dto.BotMove;
+import com.mrthomaswagner.vindiniumclient.BotMove;
 import com.mrthomaswagner.vindiniumclient.dto.GameState;
 
 public interface Bot {

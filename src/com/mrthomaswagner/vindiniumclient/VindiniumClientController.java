@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.api.client.http.GenericUrl;
-import com.mrthomaswagner.vindiniumclient.game.Bot;
-import com.mrthomaswagner.vindiniumclient.game.BotFactory;
-import com.mrthomaswagner.vindiniumclient.game.GameStarter;
+import com.mrthomaswagner.vindiniumclient.bot.Bot;
 
 @Controller
 public class VindiniumClientController {
