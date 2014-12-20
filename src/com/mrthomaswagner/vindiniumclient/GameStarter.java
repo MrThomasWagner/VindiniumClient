@@ -15,6 +15,8 @@ import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.gson.GsonFactory;
+import com.mrthomaswagner.vindiniumclient.board.BoardRepresentation;
+import com.mrthomaswagner.vindiniumclient.board.BoardUtils;
 import com.mrthomaswagner.vindiniumclient.bot.Bot;
 import com.mrthomaswagner.vindiniumclient.dto.ApiKey;
 import com.mrthomaswagner.vindiniumclient.dto.GameState;
@@ -36,6 +38,7 @@ public class GameStarter {
     private Bot bot;
     private GenericUrl gameUrl;
     private ApiKey apiKey;
+    private BoardRepresentation boardRep;
     
     public GameStarter(Bot bot, GenericUrl gameUrl, String apiKey){
     	this.bot = bot;
@@ -49,7 +52,7 @@ public class GameStarter {
         HttpRequest request;
         HttpResponse response;
         GameState gameState = null;
-
+        
         try {
             LOG.info("Sending initial request...");
             content = new UrlEncodedContent(apiKey);
@@ -58,6 +61,13 @@ public class GameStarter {
             response = request.execute();
             gameState = response.parseAs(GameState.class);
             viewUrl = gameState.getViewUrl();
+            
+            boardRep = BoardUtils.constructBoard(
+            		gameState.getGame().getBoard().getSize(),
+            		gameState.getGame().getBoard().getTiles()
+            );
+            
+            System.out.println("hiiii" + gameState.getGame().getBoard().getTiles());
             
             LOG.info(String.format("Spinning off new game thread for game %s", gameState.getGame().getId()));
             RunnableGame runnableGame = new RunnableGame(gameState);
