@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.mrthomaswagner.vindiniumclient.dto.GameState;
+import com.mrthomaswagner.vindiniumclient.dto.GameState.Board;
 
 public class BoardUtils {
 	/*	 
@@ -18,7 +19,9 @@ public class BoardUtils {
 	$- Gold mine (neutral)
 	$1 Gold mine (belonging to hero 1)	
 	*/	
-	public static BoardRepresentation constructBoard(int size, String representation){
+	public static BoardRepresentation constructBoardRepresentation(Board board){
+		int size = board.getSize();
+		String representation = board.getTiles();
 		Map<GameState.Position, Vertex> result = new HashMap<GameState.Position, Vertex>();
 		Set<GameState.Position> mineLocations = new HashSet<GameState.Position>();
 		Set<GameState.Position> pubs = new HashSet<GameState.Position>();

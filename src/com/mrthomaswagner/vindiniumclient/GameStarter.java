@@ -62,12 +62,7 @@ public class GameStarter {
             gameState = response.parseAs(GameState.class);
             viewUrl = gameState.getViewUrl();
             
-            boardRep = BoardUtils.constructBoard(
-            		gameState.getGame().getBoard().getSize(),
-            		gameState.getGame().getBoard().getTiles()
-            );
-            
-            System.out.println("hiiii" + gameState.getGame().getBoard().getTiles());
+            boardRep = BoardUtils.constructBoardRepresentation(gameState.getGame().getBoard());            
             
             LOG.info(String.format("Spinning off new game thread for game %s", gameState.getGame().getId()));
             RunnableGame runnableGame = new RunnableGame(gameState);
@@ -92,14 +87,16 @@ public class GameStarter {
             try {
                 while (!gameState.getGame().isFinished() && !gameState.getHero().isCrashed()) {
                     LOG.info("Taking turn " + gameState.getGame().getTurn());
-                    BotMove direction = bot.move(gameState); //heres the beef, all AI logic initiated here
+                    BotMove direction = bot.move(gameState, boardRep); //heres the beef, all AI logic initiated here
                     Move move = new Move(apiKey.getKey(), direction.toString());
 
                     HttpContent turn = new UrlEncodedContent(move);
                     HttpRequest turnRequest = REQUEST_FACTORY.buildPostRequest(new GenericUrl(gameState.getPlayUrl()), turn);
                     HttpResponse turnResponse = turnRequest.execute();
-
+                    
                     gameState = turnResponse.parseAs(GameState.class);
+                    
+                    BoardUtils.updateMineOwners(boardRep);
                 }
             } catch (Exception e) {
                 LOG.error("Error during game play", e);
