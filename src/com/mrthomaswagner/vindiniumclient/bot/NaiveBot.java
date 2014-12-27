@@ -20,7 +20,14 @@ public class NaiveBot extends Bot{
 	@Override
 	public BotMove move(GameState gameState, BoardRepresentation boardRep) {
 		Hero me = gameState.getHero();
+		LOG.info(me.getLife());
 		List<Position> result;
+		List<Vertex> neighbors = boardRep.getSpaces().get(me.getPos()).getNeighbors();
+		for(Vertex v : neighbors){
+			if(v.getType() == Vertex.Type.TAVERN && me.getLife() < 99){
+				return getDirectionTo(v.getPos(), me.getPos());
+			}
+		}
 		
 		if (me.getLife() > 20){
 			LOG.info("Heading to closest mine");

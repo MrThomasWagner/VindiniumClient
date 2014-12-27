@@ -37,7 +37,6 @@ public class VindiniumClientController {
 			url = new GenericUrl(COMPETITION_URL);
 		
 		String apiKey = allRequestParams.get("api_key");
-		LOG.info(apiKey);
 		String viewUrl = (new GameStarter(bot, url, apiKey)).startGame();
 		LOG.info(String.format("New game started with viewUrl: %s", viewUrl));
 		
