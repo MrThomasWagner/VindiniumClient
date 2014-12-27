@@ -1,8 +1,6 @@
-package com.mrthomaswagner.vindiniumclient.board.path.dijkstra;
+package com.mrthomaswagner.vindiniumclient.board.path;
 
 import java.util.Comparator;
-
-import com.mrthomaswagner.vindiniumclient.board.path.PathNode;
 
 public class DijkstraPathNodeComparator implements Comparator<PathNode>
 {

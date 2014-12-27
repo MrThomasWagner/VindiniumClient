@@ -86,15 +86,18 @@ public class GameStarter {
     	public void run() {
             try {
                 while (!gameState.getGame().isFinished() && !gameState.getHero().isCrashed()) {
-                    LOG.info("Taking turn " + gameState.getGame().getTurn());
+                    long start = System.currentTimeMillis();
+                    
                     BoardUtils.updateMineOwners(boardRep, gameState);
                     BotMove direction = bot.move(gameState, boardRep); //heres the beef, all AI logic initiated here
                     Move move = new Move(apiKey.getKey(), direction.toString());
 
                     HttpContent turn = new UrlEncodedContent(move);
                     HttpRequest turnRequest = REQUEST_FACTORY.buildPostRequest(new GenericUrl(gameState.getPlayUrl()), turn);
-                    HttpResponse turnResponse = turnRequest.execute();
                     
+                    LOG.info(String.format("Request time: %d ms", (System.currentTimeMillis() - start)));
+                    
+                    HttpResponse turnResponse = turnRequest.execute();                    
                     gameState = turnResponse.parseAs(GameState.class);                    
                 }
             } catch (Exception e) {

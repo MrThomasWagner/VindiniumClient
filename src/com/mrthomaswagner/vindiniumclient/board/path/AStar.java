@@ -1,4 +1,4 @@
-package com.mrthomaswagner.vindiniumclient.board.path.astar;
+package com.mrthomaswagner.vindiniumclient.board.path;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,12 +10,10 @@ import java.util.Queue;
 
 import com.mrthomaswagner.vindiniumclient.board.BoardRepresentation;
 import com.mrthomaswagner.vindiniumclient.board.Vertex;
-import com.mrthomaswagner.vindiniumclient.board.path.PathFinder;
-import com.mrthomaswagner.vindiniumclient.board.path.PathNode;
 import com.mrthomaswagner.vindiniumclient.dto.GameState.Position;
 
 
-public class AStar extends PathFinder{
+public class AStar {
 
 	public static List<Position> getPath(BoardRepresentation boardRep, Vertex startVertex, Vertex goalVertex) {
 		

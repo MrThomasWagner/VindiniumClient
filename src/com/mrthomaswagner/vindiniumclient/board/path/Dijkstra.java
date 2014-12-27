@@ -1,4 +1,4 @@
-package com.mrthomaswagner.vindiniumclient.board.path.dijkstra;
+package com.mrthomaswagner.vindiniumclient.board.path;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,6 @@ import java.util.Queue;
 
 import com.mrthomaswagner.vindiniumclient.board.BoardRepresentation;
 import com.mrthomaswagner.vindiniumclient.board.Vertex;
-import com.mrthomaswagner.vindiniumclient.board.path.PathNode;
 import com.mrthomaswagner.vindiniumclient.dto.GameState.Position;
 
 public class Dijkstra {
@@ -37,9 +36,10 @@ public class Dijkstra {
 			List<Vertex> neighbors = nextNode.getNeighbors();
 			for(Vertex v: neighbors){
 				if (boardSpaces.get(v.getPos()).getType() == targetType){					
-					if ( boardRep.getMinePositionToOwnerMap().get(v.getPos()) != heroId){
-						return getPath(new PathNode(v, nextNode));
-					}					
+					if (targetType == Vertex.Type.MINE && boardRep.getMinePositionToOwnerMap().get(v.getPos()) == heroId){
+						continue;
+					}
+					return getPath(new PathNode(v, nextNode));
 				}
 				if(dists.get(v.getPos()) > nextNode.getDistSoFar() + 1){
 					dists.put(v.getPos(), nextNode.getDistSoFar() + 1);			
