@@ -5,6 +5,6 @@
 <style type="text/css">
 </style>
 <body>
-<p>ViewUrl: ${viewUrl}</p>
+<p>${viewUrl}</p>
 </body>
 </html>

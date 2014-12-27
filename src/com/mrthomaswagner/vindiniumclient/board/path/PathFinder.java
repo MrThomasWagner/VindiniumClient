@@ -1,5 +1,5 @@
 package com.mrthomaswagner.vindiniumclient.board.path;
 
-public interface PathFinder {
-
+public abstract class PathFinder {
+	
 }

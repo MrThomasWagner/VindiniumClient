@@ -1,8 +1,10 @@
-package com.mrthomaswagner.vindiniumclient.board.path;
+package com.mrthomaswagner.vindiniumclient.board.path.astar;
 
 import java.util.Comparator;
 
-public class PathNodeComparator implements Comparator<PathNode>
+import com.mrthomaswagner.vindiniumclient.board.path.PathNode;
+
+public class AStarPathNodeComparator implements Comparator<PathNode>
 {
     @Override
     public int compare(PathNode x, PathNode y){	    	
